@@ -29,6 +29,8 @@ import com.jaydenxiao.androidfire.app.AppApplication;
  */
 public class MyUtils {
 
+    
+//动态设置TabLayout的模式：根据屏幕宽度和Tab的宽度设置条件进行设置。   
     public static void dynamicSetTabLayoutMode(TabLayout tabLayout) {
         int tabWidth = calculateTabWidth(tabLayout);
         int screenWidth = getScreenWith();
