@@ -31,7 +31,7 @@ public class BaseFragmentAdapter extends FragmentPagerAdapter {
         this.mTitles = mTitles;
         setFragments(fm,fragmentList,mTitles);
     }
-    //刷新fragment
+    //从参数中定义的fragment list中去设置fragment就可以同时定义标题，然后进行资源刷新。
     public void setFragments(FragmentManager fm,List<Fragment> fragments,List<String> mTitles) {
         this.mTitles = mTitles;
         if (this.fragmentList != null) {
@@ -47,16 +47,19 @@ public class BaseFragmentAdapter extends FragmentPagerAdapter {
         notifyDataSetChanged();
     }
 
+    
+    //获取页面的标题
     @Override
     public CharSequence getPageTitle(int position) {
         return !CollectionUtils.isNullOrEmpty(mTitles) ? mTitles.get(position) : "";
     }
-
+  //从fragment list中根据位置获取fragment
     @Override
     public Fragment getItem(int position) {
         return fragmentList.get(position);
     }
 
+    //根据fragmentlist获取fragment的数目。
     @Override
     public int getCount() {
         return fragmentList.size();
