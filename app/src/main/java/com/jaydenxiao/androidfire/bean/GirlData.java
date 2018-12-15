@@ -29,7 +29,7 @@ public class GirlData {
     public void setError(boolean error) {
         isError = error;
     }
-
+//这里对PhotoGirl有一个统一设置
     public void setResults(List<PhotoGirl> results) {
         this.results = results;
     }
