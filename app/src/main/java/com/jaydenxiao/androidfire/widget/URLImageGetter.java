@@ -59,7 +59,7 @@ public class URLImageGetter implements Html.ImageGetter {
         mNewsBody = newsBody;
         mPicTotal = picTotal;
     }
-
+//统一管理获取资源：1.本地有资源就直接就从本地获取。2.本地没有就从互联网获取资源（两种获取的方法的封装在本页都有
     @Override
     public Drawable getDrawable(final String source) {
         Drawable drawable;
@@ -72,7 +72,7 @@ public class URLImageGetter implements Html.ImageGetter {
         }
         return drawable;
     }
-
+//从本地file获取Drawable资源
     @Nullable
     private Drawable getDrawableFromDisk(File file) {
         Drawable drawable = Drawable.createFromPath(file.getAbsolutePath());
@@ -82,14 +82,14 @@ public class URLImageGetter implements Html.ImageGetter {
         }
         return drawable;
     }
-
+//计算图片的高度
     private int calculatePicHeight(Drawable drawable) {
         float imgWidth = drawable.getIntrinsicWidth();
         float imgHeight = drawable.getIntrinsicHeight();
         float rate = imgHeight / imgWidth;
         return (int) (mPicWidth * rate);
     }
-
+//从网络请求获取drawable资源
     @NonNull
     private Drawable getDrawableFromNet(final String source) {
         mSubscription = Api.getDefault(HostType.NEWS_DETAIL_HTML_PHOTO)
@@ -122,7 +122,7 @@ public class URLImageGetter implements Html.ImageGetter {
 
         return createPicPlaceholder();
     }
-
+//将从互联网获取到的资源存入到本地file中去，使用了InputSream FileOurputSreamn   byte File 进行实现
     @NonNull
     private Boolean WritePicToDisk(ResponseBody response, String source) {
         File file = new File(mFilePath, source.hashCode() + "");
@@ -133,8 +133,8 @@ public class URLImageGetter implements Html.ImageGetter {
             out = new FileOutputStream(file);
             byte[] buffer = new byte[1024];
             int len;
-            while ((len = in.read(buffer)) != -1) {
-                out.write(buffer, 0, len);
+            while ((len = in.read(buffer)) != -1) {//表示有资源
+                out.write(buffer, 0, len);  //有资源就直接写入
             }
             return true;
         } catch (Exception e) {
@@ -152,6 +152,9 @@ public class URLImageGetter implements Html.ImageGetter {
         }
     }
 
+    
+    
+  //给图片资源drawable设置一个边框
     @SuppressWarnings("deprecation")
     @NonNull
     private Drawable createPicPlaceholder() {
