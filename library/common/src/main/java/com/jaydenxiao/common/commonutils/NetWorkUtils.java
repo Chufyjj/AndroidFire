@@ -14,12 +14,7 @@ import java.util.regex.Pattern;
  */
 public class NetWorkUtils {
 
-    /**
-     * 检查网络是否可用
-     *
-     * @param paramContext
-     * @return
-     */
+    //用于检测网路能不能用
     public static boolean isNetConnected(Context paramContext) {
         boolean i = false;
         NetworkInfo localNetworkInfo = ((ConnectivityManager) paramContext
@@ -28,9 +23,9 @@ public class NetWorkUtils {
             return true;
         return false;
     }
-    /**
-     * 检测wifi是否连接
-     */
+    
+    
+    //用于检测设备是不是连接上了WiFi
     public static boolean isWifiConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
@@ -42,9 +37,7 @@ public class NetWorkUtils {
         return false;
     }
 
-    /**
-     * 检测3G是否连接
-     */
+   //用于检测设备连接的网络是否是3G网络
     public static boolean is3gConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
@@ -56,9 +49,7 @@ public class NetWorkUtils {
         return false;
     }
 
-    /**
-     * 判断网址是否有效
-     */
+   //用于检测输入的网址是否是有效的。
     public static boolean isLinkAvailable(String link) {
         Pattern pattern = Pattern.compile("^(http://|https://)?((?:[A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\\.)+([A-Za-z]+)[/\\?\\:]?.*$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(link);
